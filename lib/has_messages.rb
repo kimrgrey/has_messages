@@ -1,4 +1,6 @@
-require 'state_machine'
+require "state_machines-activerecord"
+require "has_messages/message"
+require "has_messages/message_recipient"
 
 # Adds a generic implementation for sending messages between users
 module HasMessages
