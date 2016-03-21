@@ -1,6 +1,5 @@
 require "bundler/setup"
 require "active_record"
-require "logger"
 require "minitest/autorun"
 require 'database_cleaner'
 
@@ -161,3 +160,7 @@ DatabaseCleaner.strategy = :transaction
 
 HasMessages::Test.connect_to_db
 HasMessages::Test.run_migrations
+
+# uncomment this line if you need more logs
+# require "logger"
+# ActiveRecord::Base.logger = Logger.new($stdout)
