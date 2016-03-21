@@ -103,20 +103,14 @@ module HasMessages
     end
 
     def set_position
-      last_recipient = message.recipients.where(:kind => kind).order("position DESC").first
-
-      if last_recipient.present?
-        self.position = last_recipient.position + 1
-      else
-        self.position = 1
-      end
+      self.position = message.recipients.where(:kind => kind).maximum(:position).to_i + 1
     end
 
     def reorder_positions
       return if position.nil?
       pos = self.position
       update(:position => nil)
-      MessageRecipient.where("message_id = ? AND kind = ? AND position > ?", message_id, kind, position).update_all("position = (position - 1)")
+      MessageRecipient.where("message_id = ? AND kind = ? AND position > ?", message_id, kind, pos).update_all("position = (position - 1)")
     end
   end
 end
