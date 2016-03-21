@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
+require File.expand_path(File.dirname(__FILE__) + '/test_helper')
 
 class MessageRecipientByDefaultTest < Minitest::Test
   def setup
@@ -142,7 +142,7 @@ class MessageRecipientOfMultipleTest < ActiveSupport::TestCase
     @ralph = create_user(:login => 'Ralph')
 
     message = create_message(:to => [@erich, @richard])
-    
+
     @recipient = create_message_recipient(
       :message => message,
       :receiver => @ralph,
