@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/test_helper')
 
 class MessageRecipientByDefaultTest < Minitest::Test
   def setup
-    @recipient = HasMessages::MessageRecipient.new
+    @recipient = MessageRecipient.new
   end
 
   def test_should_not_have_a_message
@@ -423,6 +423,6 @@ class MessageRecipientAsAClassTest < ActiveSupport::TestCase
   end
 
   def test_should_include_only_visible_messages_in_visible_scope
-    assert_equal [@visible_recipient], HasMessages::MessageRecipient.visible
+    assert_equal [@visible_recipient], MessageRecipient.visible
   end
 end

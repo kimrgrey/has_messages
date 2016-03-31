@@ -29,7 +29,7 @@ class UserTest < ActiveSupport::TestCase
 
   def test_should_be_able_to_create_new_messages
     message = @user.messages.build
-    assert_instance_of HasMessages::Message, message
+    assert_instance_of Message, message
     assert_equal @user, message.sender
   end
 

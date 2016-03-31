@@ -41,12 +41,12 @@ module HasMessages
       has_many :messages,
         -> { where(:hidden_at => nil).order(:created_at => :desc) },
         :as => :sender,
-        :class_name => 'HasMessages::Message'
+        :class_name => 'Message'
 
       has_many :received_messages,
         -> { visible.joins(:message).where(:messages => { :state => "sent"}).order("messages.created_at DESC") },
         :as => :receiver,
-        :class_name => 'HasMessages::MessageRecipient'
+        :class_name => 'MessageRecipient'
 
       include HasMessages::InstanceMethods
     end

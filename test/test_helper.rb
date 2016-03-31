@@ -113,7 +113,7 @@ module HasMessages
         record
       end
 
-      build HasMessages::Message do |attributes|
+      build Message do |attributes|
         attributes[:sender] = create_user unless attributes.include?(:sender)
         attributes.reverse_merge!(
           :subject => 'New features',
@@ -122,7 +122,7 @@ module HasMessages
         )
       end
 
-      build HasMessages::MessageRecipient do |attributes|
+      build MessageRecipient do |attributes|
         attributes[:message] = create_message unless attributes.include?(:message)
         attributes[:receiver] = create_user(:login => 'me') unless attributes.include?(:receiver)
         attributes.reverse_merge!(
